@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ${REGISTRY}/${IMAGE_NAME}:latest
+    container_name: ${GITHUB_EVENT_REPOSITORY_NAME}
+    ports:
+      - "3000:80"
+    restart: always
