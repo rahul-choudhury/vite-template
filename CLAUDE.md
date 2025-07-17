@@ -74,7 +74,8 @@ src/
 - Before creating any new type definitions/interfaces, check the `src/lib/definitions.ts` file
 - Refrain from creating new handler functions if not absolutely necessary
 - Prefer using the `function` keyword when creating components/functions over arrow functions
-- Only write high-value comments if at all. Avoid talking to the user through comments.
+- Only write high-value comments if at all. Avoid talking to the user through comments
+- Do not run the dev server command
 
 ## JavaScript/Typescript (mirrored and adjusted from [gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/GEMINI.md#javascripttypescript))
 
