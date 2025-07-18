@@ -1,4 +1,5 @@
 import { env } from "@/config/env";
+import { toast } from "sonner";
 
 type RequestOptions = {
   method?: string;
@@ -28,7 +29,15 @@ async function fetchApi<T>(
   url: string,
   options: RequestOptions = {},
 ): Promise<T> {
-  const { method = "GET", headers = {}, body, params } = options;
+  const { method = "GET", body, params } = options;
+  let { headers } = options;
+
+  if (env.ENABLE_AUTH_MOCKING) {
+    headers = {
+      ...headers,
+      Authorization: `Bearer ${env.MOCK_AUTH_TOKEN}`,
+    };
+  }
 
   const fullUrl = buildUrlWithParams(`${env.API_URL}${url}`, params);
 
@@ -45,6 +54,9 @@ async function fetchApi<T>(
 
   if (!response.ok) {
     const message = (await response.json()).message || response.statusText;
+    if (method !== "GET") {
+      toast.error(message);
+    }
     throw new Error(message);
   }
 
