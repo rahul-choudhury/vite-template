@@ -11,56 +11,8 @@
 
 ### Package Management
 
-- Uses `pnpm` as package manager (pinned to version 10.11.0+)
+- Uses `pnpm` as package manager
 - Install dependencies: `pnpm install`
-
-## Architecture Overview
-
-### Tech Stack
-
-- **Frontend**: React 19 with TypeScript
-- **Build Tool**: Vite with SWC plugin for fast compilation
-- **Styling**: Tailwind CSS v4 with CSS variables
-- **UI Components**: Custom components built on Radix UI primitives (shadcn/ui pattern)
-- **State Management**: TanStack Query for server state
-- **Routing**: React Router v7
-- **Validation**: Zod for schema validation
-- **Icons**: Lucide React
-
-### Project Structure
-
-```
-src/
-├── app.tsx           # Main app component
-├── main.tsx          # App entry point with providers
-├── components/ui/    # Reusable UI components (shadcn/ui style)
-├── config/           # Configuration and environment setup
-├── lib/              # Utility functions and API client
-└── index.css         # Global styles and Tailwind imports
-```
-
-### Key Patterns
-
-#### Environment Configuration
-
-- Environment variables are validated with Zod in `src/config/env.ts`
-- Use `VITE_` prefix for client-side environment variables
-- Required: `VITE_API_URL` for API client
-
-#### API Client
-
-- Centralized HTTP client in `src/lib/api-client.ts`
-- Supports all REST methods with TypeScript generics
-- Automatic JSON handling and error parsing
-- Query parameter support with filtering
-- Credentials included by default
-
-#### Component System
-
-- Uses shadcn/ui component patterns with class-variance-authority
-- Path alias `@/` maps to `src/`
-- Components support `asChild` pattern via Radix Slot
-- Tailwind utility classes with `cn()` helper for conditional styling
 
 ## Code Policy
 
@@ -72,6 +24,7 @@ src/
 - Prefer using the `function` keyword when creating components/functions over arrow functions
 - Only write high-value comments if at all. Avoid talking to the user through comments
 - Do not run the dev server command
+- Before creating any ui components, check for their existence in `src/components/ui`. If not present, install it from shadcn/ui (https://ui.shadcn.com/docs/components).
 
 ## JavaScript/Typescript (mirrored and adjusted from [gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/GEMINI.md#javascripttypescript))
 
