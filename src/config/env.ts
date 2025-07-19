@@ -27,7 +27,7 @@ function createEnv() {
     throw new Error(
       `Invalid env provided.
 The following variables are missing or invalid:
-${Object.entries(parsedEnv.error.flatten().fieldErrors)
+${Object.entries(z.flattenError(parsedEnv.error))
   .map(([k, v]) => `- ${k}: ${v}`)
   .join("\n")}
 `,
