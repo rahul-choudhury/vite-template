@@ -1,18 +1,7 @@
 ## Development Commands
 
-### Core Development
-
-- `pnpm dev` - Start development server
 - `pnpm build` - Build for production (runs TypeScript check + Vite build)
-- `pnpm preview` - Preview production build locally
 - `pnpm lint` - Run ESLint
-- `pnpm format` - Format code with Prettier
-- `pnpm format:check` - Check code formatting
-
-### Package Management
-
-- Uses `pnpm` as package manager
-- Install dependencies: `pnpm install`
 
 ## Code Policy
 
