@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Deploy
 on:
   push:
     branches: ["main"]
@@ -7,7 +7,22 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  amd64:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
+      - run: |
+          pnpm install
+          pnpm lint
+          pnpm format:check
+
+  deploy:
+    needs: checks
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -28,7 +43,6 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-
       # Uncomment below after setting up your coolify instance.
       # - name: Deploy to Coolify
       #   run: |
