@@ -1,26 +1,11 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router";
-import { Routes } from "./routes.tsx";
-import { Toaster } from "./components/ui/sonner.tsx";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+import AppProvider from "@/app/provider";
+import "@/index.css";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-      <Toaster />
-    </QueryClientProvider>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <AppProvider />
+  </React.StrictMode>,
 );

@@ -1,3 +1,6 @@
+import { Loader2 } from "lucide-react";
+
+import { useRandomPost } from "@/api/posts";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,8 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useRandomPost } from "@/lib/data";
-import { Loader2 } from "lucide-react";
 
 export function RandomPost() {
   const {

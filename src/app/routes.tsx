@@ -1,5 +1,5 @@
-import { Routes as RoutesConfig, Route } from "react-router";
-import App from "./app";
+import { Route, Routes as RoutesConfig } from "react-router";
+import { App } from ".";
 
 export function Routes() {
   return (

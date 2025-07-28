@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api-client";
-import type { Post } from "@/lib/definitions";
+import type { Post } from "@/types";
 
 export function useRandomPost() {
   return useQuery({
