@@ -5,9 +5,9 @@ function createEnv() {
     API_URL: z.string(),
     ENABLE_AUTH_MOCKING: z
       .string()
-      .refine((s) => s === "true" || s === "false")
-      .transform((s) => s === "true")
-      .optional(),
+      .optional()
+      .refine((s) => s === "" || s === "true" || s === "false")
+      .transform((s) => s === "true"),
     MOCK_AUTH_TOKEN: z.string().optional(),
   });
 
@@ -24,12 +24,18 @@ function createEnv() {
   const parsedEnv = EnvSchema.safeParse(envVars);
 
   if (!parsedEnv.success) {
+    const flattened = z.flattenError(parsedEnv.error);
+    const errorMessages = [
+      ...flattened.formErrors.map((err) => `- Form: ${err}`),
+      ...Object.entries(flattened.fieldErrors).map(
+        ([field, errors]) => `- ${field}: ${errors.join(", ")}`,
+      ),
+    ];
+
     throw new Error(
       `Invalid env provided.
 The following variables are missing or invalid:
-${Object.entries(z.flattenError(parsedEnv.error))
-  .map(([k, v]) => `- ${k}: ${v}`)
-  .join("\n")}
+${errorMessages.join("\n")}
 `,
     );
   }
