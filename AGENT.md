@@ -7,13 +7,14 @@
 
 - Use kebab case for file names
 - Prefer named exports over default exports
-- Use `import * as React from 'react'` pattern when importing react hooks
+- Use the `cn` util for writing conditional tailwind classes
 - Before creating any new type definitions/interfaces, check the `src/lib/definitions.ts` file
 - Refrain from creating new handler functions if not absolutely necessary
 - Prefer using the `function` keyword when creating components/functions over arrow functions
 - Only write high-value comments if at all. Avoid talking to the user through comments
-- Do not run the dev server command
-- Before creating any ui components, check for their existence in `src/components/ui`. If not present, install it from shadcn/ui (https://ui.shadcn.com/docs/components).
+- DO NOT run the dev server command
+- Before creating any ui components, check for their existence in `src/components/ui`
+- Install new components from shadcn/ui (https://ui.shadcn.com/docs/components)
 
 ## JavaScript/Typescript (mirrored and adjusted from [gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/GEMINI.md#javascripttypescript))
 
