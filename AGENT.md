@@ -1,20 +1,31 @@
 ## Development Commands
 
-- `pnpm build` - Build for production (runs TypeScript check + Vite build)
+- `pnpm typecheck` - Run type check
 - `pnpm lint` - Run ESLint
 
 ## Code Policy
 
 - Use kebab case for file names
 - Prefer named exports over default exports
+- DO NOT add `import React from "react"` to the top of a new file. This is not needed for react versions >= 18
 - Use the `cn` util for writing conditional tailwind classes
 - Before creating any new type definitions/interfaces, check the `src/lib/definitions.ts` file
-- Refrain from creating new handler functions if not absolutely necessary
 - Prefer using the `function` keyword when creating components/functions over arrow functions
+- ALWAYS destructure custom hooks (including query/mutation hooks)
 - Only write high-value comments if at all. Avoid talking to the user through comments
 - DO NOT run the dev server command
 - Before creating any ui components, check for their existence in `src/components/ui`
 - Install new components from shadcn/ui (https://ui.shadcn.com/docs/components)
+
+### Dialog Best Practices
+
+- **Never use `AlertDialogAction` or `DialogClose`** for actions that require loading states or error handling
+- **Always use regular `Button`** in dialog footers when you need to:
+  - Show loading states during async operations
+  - Handle errors without auto-closing the dialog
+  - Manually control when the dialog closes
+- **Reason**: Both `AlertDialogAction` and `DialogClose` have built-in behavior that closes the dialog immediately on click, preventing proper UX during async operations
+- **Use controlled dialogs**: For complex interactions, manage dialog state with `useState` and the `open` prop rather than relying on built-in close triggers
 
 ## JavaScript/Typescript (mirrored and adjusted from [gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/GEMINI.md#javascripttypescript))
 
