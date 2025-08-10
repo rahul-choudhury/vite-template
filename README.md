@@ -8,6 +8,7 @@ A React starter template that allows you to quickly get started with a new React
 - **shadcn/ui** - Beautiful, accessible components built on Radix UI
 - **Tailwind CSS v4** - Latest Tailwind with CSS variables
 - **TanStack Query** - Powerful server state management
+- **TanStack Router** - Type-safe routing with file-based route generation
 - **Deployment Config** - Includes Dockerfile and Github Actions workflow for deployments via coolify
 
 ## Project Structure
@@ -18,16 +19,16 @@ Most of the application code resides in the `src` directory:
 
 ```sh
 src
-├── app/         # Core app setup: routing, providers, and main component
 ├── api/         # Global API hooks and request definitions
-├── assets/      # Static assets (images, fonts, etc.)
 ├── components/  # Shared, reusable UI components (e.g., from shadcn/ui)
+├── config/      # Application configuration files (e.g., env variables)
 ├── features/    # Self-contained feature modules
 │   └── posts/
 │       └── components/
+├── hooks/       # Shared, reusable React hooks
 ├── lib/         # Shared libraries and helper functions (e.g., api client, utils)
-├── types/       # Shared TypeScript types and interfaces
-└── utils/       # Shared utility functions
+├── routes/      # Route definitions for TanStack Router
+└── types/       # Shared TypeScript types and interfaces
 ```
 
 A feature module can contain its own scoped assets, components, hooks, types, and utility functions:
@@ -47,7 +48,7 @@ Key principles:
 
 - **Feature-Based Modules**: Each business feature (e.g., `posts`, `users`) is a self-contained module inside `src/features`.
 - **Shared Code**: Code that can be used across multiple features or the entire app lives in top-level directories like `components`, `lib`, and `hooks`.
-- **Unidirectional Flow**: Dependencies flow in one direction: `shared code` -> `features` -> `app`. This prevents circular dependencies and makes the architecture predictable.
+- **Unidirectional Flow**: Dependencies flow in one direction: `shared code` -> `features`. This prevents circular dependencies and makes the architecture predictable.
 
 ## Getting Started
 
