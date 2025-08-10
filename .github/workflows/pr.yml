@@ -1,0 +1,35 @@
+name: QC
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-format-typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run linting
+        run: pnpm lint
+
+      - name: Run format check
+        run: pnpm format:check
+
+      - name: Run type checking and build
+        run: pnpm build

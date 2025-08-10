@@ -1,2 +1,3 @@
 pnpm*
+*.md
 src/components/ui
