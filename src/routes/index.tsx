@@ -1,4 +1,4 @@
-import { RandomPost } from "@/features/posts/components/random-post";
+import { Posts } from "@/features/posts";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -6,5 +6,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <RandomPost />;
+  return <Posts />;
 }
