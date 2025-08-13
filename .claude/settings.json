@@ -1,6 +1,11 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm run build)", "Bash(pnpm run lint)", "WebFetch"],
+    "allow": [
+      "Bash(pnpm run typecheck)",
+      "Bash(pnpm run lint)",
+      "Bash(pnpm run build)",
+      "WebFetch"
+    ],
     "deny": ["Bash(pnpm run dev)"]
   }
 }

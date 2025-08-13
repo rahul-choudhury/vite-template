@@ -3,12 +3,6 @@ import * as z from "zod";
 function createEnv() {
   const EnvSchema = z.object({
     API_URL: z.string(),
-    ENABLE_AUTH_MOCKING: z
-      .string()
-      .optional()
-      .refine((s) => s === "" || s === "true" || s === "false")
-      .transform((s) => s === "true"),
-    MOCK_AUTH_TOKEN: z.string().optional(),
   });
 
   const envVars = Object.entries(import.meta.env).reduce<
