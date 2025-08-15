@@ -29,15 +29,7 @@ async function fetchApi<T>(
   url: string,
   options: RequestOptions = {},
 ): Promise<T> {
-  const { method = "GET", body, params } = options;
-  let { headers } = options;
-
-  if (env.ENABLE_AUTH_MOCKING) {
-    headers = {
-      ...headers,
-      Authorization: `Bearer ${env.MOCK_AUTH_TOKEN}`,
-    };
-  }
+  const { headers, method = "GET", body, params } = options;
 
   const fullUrl = buildUrlWithParams(`${env.API_URL}${url}`, params);
 
