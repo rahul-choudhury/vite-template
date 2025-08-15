@@ -13,7 +13,6 @@ const queryClient = new QueryClient({
 export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
-      {/* Add navbar/sidebar here */}
       <Outlet />
       <TanStackRouterDevtools />
     </QueryClientProvider>

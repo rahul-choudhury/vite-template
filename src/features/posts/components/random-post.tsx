@@ -24,7 +24,7 @@ export function RandomPost() {
   const loading = isLoading || isRefetching;
 
   return (
-    <div className="grid min-h-screen place-items-center p-4">
+    <div className="flex justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>TanStack React Query</CardTitle>

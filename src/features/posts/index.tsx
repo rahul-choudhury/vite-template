@@ -1,5 +1,5 @@
-import { RandomPost } from "./components/random-post";
+import { UnifiedDemo } from "./components/unified-demo";
 
 export function Posts() {
-  return <RandomPost />;
+  return <UnifiedDemo />;
 }
