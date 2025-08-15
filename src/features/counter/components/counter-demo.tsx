@@ -28,7 +28,7 @@ export function CounterDemo() {
   }
 
   return (
-    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center p-4">
+    <div className="flex justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Zustand State Management</CardTitle>
