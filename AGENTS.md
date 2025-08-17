@@ -5,17 +5,16 @@
 
 ## Code Policy
 
+- Refer the README.md for preferred file tree structure when creating new files
 - Use kebab case for file names
+- Install ui components from shadcn/ui
 - Prefer named exports over default exports
-- DO NOT add `import React from "react"` to the top of a new file. This is not needed for react versions >= 18
+- DO NOT add `import React from "react"` to the top of a new file
 - Use the `cn` util for writing conditional tailwind classes
-- Before creating any new type definitions/interfaces, check the `src/lib/definitions.ts` file
 - Prefer using the `function` keyword when creating components/functions over arrow functions
-- ALWAYS destructure custom hooks (including query/mutation hooks)
+- Prefer destructuring hooks. Ex: `{ isPending, data } = useQuery(...)` instead of `query = useQuery(...)`
 - Only write high-value comments if at all. Avoid talking to the user through comments
 - DO NOT run the dev server command
-- Before creating any ui components, check for their existence in `src/components/ui`
-- Install new components from shadcn/ui (https://ui.shadcn.com/docs/components)
 
 ### Dialog Best Practices
 
