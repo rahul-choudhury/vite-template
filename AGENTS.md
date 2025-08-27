@@ -16,7 +16,39 @@
 - Only write high-value comments if at all. Avoid talking to the user through comments
 - DO NOT run the dev server command
 
-### Dialog Best Practices
+## UI Components Best Practices
+
+### Popover and Select Components in Dialogs
+
+When using Popover or Select components inside Dialog components, always add `modal={true}` to prevent scroll behavior issues:
+
+```tsx
+// ✅ Good - Inside Dialog
+<Popover modal={true}>
+  <PopoverTrigger>...</PopoverTrigger>
+  <PopoverContent>...</PopoverContent>
+</Popover>
+
+<Select modal={true}>
+  <SelectTrigger>...</SelectTrigger>
+  <SelectContent>...</SelectContent>
+</Select>
+
+// ✅ Good - Outside Dialog (default behavior)
+<Popover>
+  <PopoverTrigger>...</PopoverTrigger>
+  <PopoverContent>...</PopoverContent>
+</Popover>
+```
+
+**Why this matters:**
+- Fixes scroll behavior when popovers/selects open inside dialogs
+- Prevents the dialog from scrolling unexpectedly when dropdown content appears
+- Ensures proper focus management and accessibility
+
+**Reference:** [shadcn/ui issue #4759](https://github.com/shadcn-ui/ui/issues/4759)
+
+### Dialog close button action
 
 - **Never use `AlertDialogAction` or `DialogClose`** for actions that require loading states or error handling
 - **Always use regular `Button`** in dialog footers when you need to:
