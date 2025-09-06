@@ -11,8 +11,9 @@
 - DO NOT add `import React from "react"` to the top of a new file
 - ALWAYS USE the `cn` util for writing conditional tailwind classes. DO NOT use template literals
 - Prefer using the `function` keyword when creating components/functions over arrow functions
-- DO NOT write trivial comments explaining obvious stuff. Only write comments for something unusual
-- ABSOLUTELY AVOID `any` and type assertions. Always prefer `unknown` over `any`
+- DO NOT write trivial comments
+- ABSOLUTELY AVOID `any`. Always prefer `unknown` over `any`
+- Narrow down types and avoid type assertions
 
 ## UI Components Best Practices
 
