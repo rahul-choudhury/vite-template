@@ -11,7 +11,7 @@
 - DO NOT add `import React from "react"` to the top of a new file
 - ALWAYS USE the `cn` util for writing conditional tailwind classes. DO NOT use template literals
 - Prefer using the `function` keyword when creating components/functions over arrow functions
-- DO NOT write trivial comments
+- DO NOT add comments to the code you produce unless it is some complex logic
 - ABSOLUTELY AVOID `any`. Always prefer `unknown` over `any`
 - Narrow down types and avoid type assertions
 
@@ -28,4 +28,4 @@
   - Show loading states during async operations
   - Handle errors without auto-closing the dialog
   - Manually control when the dialog closes
-- **Use controlled dialogs for async operation**: For complex interactions, manage dialog state with `useState` and the `open` prop rather than relying on built-in close triggers
+- **Use controlled dialogs for async operation**: Manage dialog state with `useState` and the `open` prop rather than relying on built-in close triggers
