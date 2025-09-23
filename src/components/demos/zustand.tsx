@@ -38,10 +38,16 @@ export function ZustandDemo() {
             variant="outline"
             size="icon"
             className="h-10 w-10"
+            aria-label="Decrement count"
           >
             <Minus className="h-4 w-4" />
           </Button>
-          <Button onClick={increment} size="icon" className="h-10 w-10">
+          <Button
+            onClick={increment}
+            size="icon"
+            className="h-10 w-10"
+            aria-label="Increment count"
+          >
             <Plus className="h-4 w-4" />
           </Button>
         </div>
@@ -64,13 +70,20 @@ export function ZustandDemo() {
               onClick={handleIncrementBy}
               disabled={!customAmount || isNaN(parseInt(customAmount))}
               size="sm"
+              aria-label="Add count by user entered number"
             >
               Add
             </Button>
           </div>
         </div>
 
-        <Button onClick={reset} variant="outline" className="w-full" size="sm">
+        <Button
+          onClick={reset}
+          variant="outline"
+          className="w-full"
+          size="sm"
+          aria-label="Reset count to zero"
+        >
           <RotateCcw className="mr-2 h-3 w-3" />
           Reset
         </Button>
