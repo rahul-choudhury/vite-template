@@ -50,6 +50,25 @@ Key principles:
 - **Shared Code**: Code that can be used across multiple features or the entire app lives in top-level directories like `components`, `lib`, and `hooks`.
 - **Unidirectional Flow**: Dependencies flow in one direction: `shared code` -> `features`. This prevents circular dependencies and makes the architecture predictable.
 
+## Testing
+
+This template advocates for colocating tests with their corresponding source files. This approach makes it easy to find and manage tests, as they live directly alongside the code they are testing. Test files should follow the naming convention `[filename].test.tsx`.
+
+Here is an example of the test structure within a feature directory:
+
+```sh
+src/
+└── features/
+    └── counter/
+        ├── index.tsx
+        ├── index.test.tsx       # Test for index.tsx
+        └── components/
+            ├── counter-demo.tsx
+            └── counter-demo.test.tsx # Test for counter-demo.tsx
+```
+
+This strategy improves discoverability and simplifies test imports, making the development workflow more efficient.
+
 ## Getting Started
 
 ### Using degit (Recommended)
