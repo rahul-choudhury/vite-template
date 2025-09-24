@@ -16,3 +16,20 @@ export function debounce<T extends unknown[]>(
     timer = setTimeout(() => fn(...args), limit);
   };
 }
+
+export function throttle<T extends unknown[]>(
+  fn: (...args: T) => void,
+  limit = 4000,
+) {
+  let inThrottle = false;
+
+  return (...args: T) => {
+    if (inThrottle) return;
+
+    inThrottle = true;
+    fn(...args);
+    setTimeout(() => {
+      inThrottle = false;
+    }, limit);
+  };
+}
