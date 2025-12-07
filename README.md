@@ -76,7 +76,7 @@ This strategy improves discoverability and simplifies test imports, making the d
 ```bash
 npx degit rahul-choudhury/vite-template my-project
 cd my-project
-cp .env .env.local
+cp .env.sample .env.local
 pnpm install
 pnpm dev
 ```
@@ -86,7 +86,7 @@ pnpm dev
 ```bash
 git clone https://github.com/rahul-choudhury/vite-template.git my-project
 cd my-project
-cp .env .env.local
+cp .env.sample .env.local
 rm -rf .git
 pnpm install
 pnpm dev
