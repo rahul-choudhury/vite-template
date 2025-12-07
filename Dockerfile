@@ -1,17 +1,16 @@
-FROM node:24-alpine AS base
+FROM oven/bun:alpine AS base
 
 FROM base AS deps
 WORKDIR /app
-RUN corepack enable
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-RUN pnpm install --frozen-lockfile
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
 FROM base AS builder
 WORKDIR /app
 RUN corepack enable
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN bun run build
 
 FROM nginx:alpine AS runner
 WORKDIR /usr/share/nginx/html

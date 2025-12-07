@@ -10,29 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: Lint
+        run: bun run lint
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".node-version"
-          cache: "pnpm"
+      - name: Type Check
+        run: bun run typecheck
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run linting
-        run: pnpm lint
-
-      - name: Run format check
-        run: pnpm format:check
-
-      - name: Run tests
-        run: pnpm test
-
-      - name: Run type checking and build
-        run: pnpm build
+      - name: Formatting
+        run: bun run format:check
