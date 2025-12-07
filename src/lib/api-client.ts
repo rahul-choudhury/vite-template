@@ -1,4 +1,4 @@
-import { env } from "@/config/env";
+import { API_URL } from "@/config/env";
 
 type RequestOptions = {
   method?: string;
@@ -30,7 +30,7 @@ async function fetchApi<T>(
 ): Promise<T> {
   const { headers, method = "GET", body, params } = options;
 
-  const fullUrl = buildUrlWithParams(`${env.API_URL}${url}`, params);
+  const fullUrl = buildUrlWithParams(`${API_URL}${url}`, params);
 
   const response = await fetch(fullUrl, {
     method,
