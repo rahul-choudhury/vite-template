@@ -31,14 +31,11 @@ src/features/awesome-feature
 - `bun run lint` does lint check via eslint
 - `bun run typecheck` does typecheck via tsc
 
-## Coding Style & Naming Conventions
+## Conventions
 - Use `PascalCase` for React components, `camelCase` for hooks/utilities, `SNAKE_CASE` for global variables and `kebab-case` for directories and file names
-- DO NOT add `import React from "react"` to the top of a new react component file. This is a legacy pattern
 - ALWAYS use the `cn` util for writing conditional tailwind classes. DO NOT use template literals
-- DO NOT use `any` at all costs. Always prefer `unknown` over `any`
-- ALWAYS Narrow down types and AVOID type assertions/casting
-- Before adding an useEffect to the codebase, refer @docs/you-might-not-need-an-effect.md
-- Before creating zod schemas, refer @docs/zod-migration-guide.md
+- Before adding an useEffect to the codebase, refer `https://react.dev/learn/you-might-not-need-an-effect`
+- Create zod v4 schemas. Refer `https://zod.dev/v4/changelog`
 
 ## shadcn/ui components Best Practices
 
@@ -52,3 +49,6 @@ When using Popover or Select components inside Dialog components, always add `mo
   - Handle errors without auto-closing the dialog
   - Manually control when the dialog closes
 - **Use controlled dialogs for async operation**: Manage dialog state with `useState` and the `open` prop rather than relying on built-in close triggers
+
+### Resetting Select Components
+When programmatically clearing a Select component's value, use the `key` prop to force a remount. Set `key={value ?? "no-selection"}` to ensure the component resets properly when the value becomes undefined.
