@@ -1,54 +1,16 @@
-## Project Structure
+# Vite Template
+
+Vite + React 19 application using TanStack Router and TanStack Query.
+
+## Commands
 
 ```sh
-src
-├── api/         # Global API hooks and request definitions
-├── components/  # Shared, reusable UI components (e.g., from shadcn/ui)
-├── config/      # Application configuration files (e.g., env variables)
-├── features/    # Self-contained feature modules
-│   └── posts/
-│       └── components/
-├── hooks/       # Shared, reusable React hooks
-├── lib/         # Shared libraries and helper functions (e.g., api client, utils)
-├── routes/      # Route definitions for TanStack Router
-└── types/       # Shared TypeScript types and interfaces
+bun run lint       # ESLint check
+bun run typecheck  # TypeScript check
 ```
 
-A feature module can contain its own scoped assets, components, hooks, types, and utility functions:
+## Documentation
 
-```sh
-src/features/awesome-feature
-|
-+-- assets/      # Feature-specific static files
-+-- components/  # Scoped React components
-+-- hooks/       # Scoped React hooks
-+-- stores/      # Scoped state stores (e.g., Zustand, Redux)
-+-- types/       # Scoped TypeScript types
-+-- utils/       # Scoped utility functions
-```
-
-## Scripts
-- `bun run lint` does lint check via eslint
-- `bun run typecheck` does typecheck via tsc
-
-## Conventions
-- Use `PascalCase` for React components, `camelCase` for hooks/utilities, `SNAKE_CASE` for global variables and `kebab-case` for directories and file names
-- ALWAYS use the `cn` util for writing conditional tailwind classes. DO NOT use template literals
-- Before adding an useEffect to the codebase, refer `https://react.dev/learn/you-might-not-need-an-effect`
-- Create zod v4 schemas. Refer `https://zod.dev/v4/changelog`
-
-## shadcn/ui components Best Practices
-
-### Popover and Select Components in Dialogs
-When using Popover or Select components inside Dialog components, always add `modal={true}` to prevent scroll behavior issues
- 
-### Dialog close button action
-- **Never use `AlertDialogAction` or `DialogClose`** for actions that require loading states or error handling
-- **Always use regular `Button`** in dialog footers when you need to:
-  - Show loading states during async operations
-  - Handle errors without auto-closing the dialog
-  - Manually control when the dialog closes
-- **Use controlled dialogs for async operation**: Manage dialog state with `useState` and the `open` prop rather than relying on built-in close triggers
-
-### Resetting Select Components
-When programmatically clearing a Select component's value, use the `key` prop to force a remount. Set `key={value ?? "no-selection"}` to ensure the component resets properly when the value becomes undefined.
+- [Project Structure](docs/project-structure.md)
+- [Conventions](docs/conventions.md)
+- [shadcn/ui Best Practices](docs/shadcn-ui.md)
